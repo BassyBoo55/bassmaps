@@ -182,11 +182,12 @@
 
       function showPosition(position) {
         map.flyTo({
-        center: [position.coordinates.latitude, position.coordinates.longitude],
+        center: [navigator.geolocation.position.coordinates.latitude, navigator.geolocation.position.coordinates.longitude],
         essential: true // this animation is considered essential with respect to prefers-reduced-motion
       });
       }
-  
+      
+
 
       const clearances = {
         'type': 'FeatureCollection',
