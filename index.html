@@ -189,9 +189,10 @@
 
       navigator.geolocation.getCurrentPosition((position) => {
         map.flyTo({
-        center: [(position.coords.latitude), (position.coords.longitude)],
+        center: [position.coords.latitude, position.coords.longitude],
         essential: true // this animation is considered essential with respect to prefers-reduced-motion
       });
+      console.log(position.coords.latitude, position.coords.longitude)
     });
       
 
