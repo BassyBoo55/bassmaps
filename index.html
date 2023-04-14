@@ -141,7 +141,7 @@
     <div id="map"></div>
     <div class="sidebar">
       <div class="heading">
-        <div id="testybio">BassMaps Reports</div>
+        <h1>BassMaps Reports</>
       </div>
       <div id="reports" class="reports"></div>
     </div>
@@ -149,26 +149,14 @@
     <script>
       mapboxgl.accessToken = 'pk.eyJ1IjoiaGFycnloZTEyMyIsImEiOiJjbGdnanowODQwY2VzM3JvMHc0cWw5d28yIn0.PIbCSf11pBUpmi8KXLq6DA';
 
-      const x = document.getElementById("testybio");
+      
 
-      function getLocation() {
-     if (navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition(showPosition);
-     } else {
-       x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
-
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "Longitude: " + position.coords.longitude;
-  console.log (position.coords.latitude)
-}
+      
       const map = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/harryhe123/clggk2n80003j01qqc7eq0yiy',
-        center: [1, 1], // starting position
-        zoom: 11 // starting zoom
+        center: [0, 50], // starting position
+        zoom: 8 // starting zoom
       });
 
       const directions = new MapboxDirections({
@@ -182,7 +170,21 @@ function showPosition(position) {
       map.scrollZoom.enable();
       map.addControl(directions, 'top-right');
 
+      function getLocation() {
+      if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(showPosition);
+     } else {
+     x.innerHTML = "Geolocation is not supported by this browser.";
+     }
+      }
       
+      function showPosition(position) {
+        map.flyTo({
+        center: [position.coordinates.latitude, position.coordinates.longitude],
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+      });
+      }
+  
 
       const clearances = {
         'type': 'FeatureCollection',
@@ -195,76 +197,6 @@ function showPosition(position) {
             },
             'properties': {
               'clearance': "13' 2"
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-84.47208, 38.06694]
-            },
-            'properties': {
-              'clearance': "13' 7"
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-84.47184, 38.06694]
-            },
-            'properties': {
-              'clearance': "13' 7"
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-84.60485, 38.12184]
-            },
-            'properties': {
-              'clearance': "13' 7"
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-84.61905, 37.87504]
-            },
-            'properties': {
-              'clearance': "12' 0"
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-84.55946, 38.30213]
-            },
-            'properties': {
-              'clearance': "13' 6"
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-84.27235, 38.04954]
-            },
-            'properties': {
-              'clearance': "13' 6"
-            }
-          },
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Point',
-              'coordinates': [-84.27264, 37.82917]
-            },
-            'properties': {
-              'clearance': "11' 6"
             }
           }
         ]
