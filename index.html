@@ -141,7 +141,7 @@
     <div id="map"></div>
     <div class="sidebar">
       <div class="heading">
-        <div id="testybio"></div>
+        <div id="testybio">BassMaps Reports</div>
       </div>
       <div id="reports" class="reports"></div>
     </div>
@@ -158,17 +158,11 @@
        x.innerHTML = "Geolocation is not supported by this browser.";
       }
     }
-    function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
 
 function showPosition(position) {
   x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
+  "Longitude: " + position.coords.longitude;
+  console.log (position.coords.latitude)
 }
       const map = new mapboxgl.Map({
         container: 'map', // container id
