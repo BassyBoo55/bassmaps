@@ -172,7 +172,7 @@
 
       function getLocation() {
       if (navigator.geolocation) {
-     navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.watchPosition(showPosition)
      } else {
      x.innerHTML = "Geolocation is not supported by this browser.";
      }
@@ -182,14 +182,14 @@
 
       function showPosition(position) {
         map.flyTo({
-        center: [navigator.geolocation.position.coordinates.latitude, navigator.geolocation.position.coordinates.longitude],
+        center: [position.coordinates.latitude, position.coordinates.longitude],
         essential: true // this animation is considered essential with respect to prefers-reduced-motion
       });
       }
       
 
 
-      
+
       const clearances = {
         'type': 'FeatureCollection',
         'features': [
