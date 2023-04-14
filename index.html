@@ -156,7 +156,7 @@
         container: 'map', // container id
         style: 'mapbox://styles/harryhe123/clggk2n80003j01qqc7eq0yiy',
         center: [-0.1, 51.5], // starting position
-        zoom: 12 // starting zoom
+        zoom: 6 // starting zoom
       });
 
       const directions = new MapboxDirections({
@@ -190,7 +190,8 @@
       navigator.geolocation.getCurrentPosition((position) => {
         map.flyTo({
         center: [position.coords.longitude, position.coords.latitude],
-        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        essential: true, // this animation is considered essential with respect to prefers-reduced-motion
+        zoom: 12
       });
       console.log(position.coords.longitude, position.coords.latitude)
     });
