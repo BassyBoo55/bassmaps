@@ -141,7 +141,8 @@
     <div id="map"></div>
     <div class="sidebar">
       <div class="heading">
-        <h1>BassMaps Reports</>
+        <h1>BassMaps Reports</h1>
+        <button type="button" onclick="locFinder()">Your Location</button>
       </div>
       <div id="reports" class="reports"></div>
     </div>
@@ -186,15 +187,15 @@
     //     essential: true // this animation is considered essential with respect to prefers-reduced-motion
     //   });
     //   }
-
+      function locFinder() {
       navigator.geolocation.getCurrentPosition((position) => {
         map.flyTo({
         center: [position.coords.longitude, position.coords.latitude],
         essential: true, // this animation is considered essential with respect to prefers-reduced-motion
         zoom: 12
       });
-      console.log(position.coords.longitude, position.coords.latitude)
     });
+  }
       
 
 
